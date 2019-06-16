@@ -1,0 +1,5 @@
+# pack-refs with: peeled fully-peeled sorted 
+e1b43e401cfcd03986f6e1566cb9c16a67546285 refs/heads/dev
+326e97a4b3771f5576b2292018781af2f68cc147 refs/heads/firebase
+1147df8ac0b18fac88e4d18a6c17ade26ad6770c refs/heads/master
+de826967d6d1eab7c464fd26215f46f383286d86 refs/stash

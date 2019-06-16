@@ -1,0 +1,32 @@
+<mat-card class="toy-card" *ngFor="let toy of toys">
+  <mat-card-header>
+    <!-- <div mat-card-avatar class="toy-header-image"></div> -->
+    <mat-card-title>{{ toy.name }}</mat-card-title>
+    <mat-card-subtitle>{{
+      toy.created_at.toDate() | date: "MMM dd, yyyy hh:mm"
+    }}</mat-card-subtitle>
+  </mat-card-header>
+  <img
+    mat-card-image
+    *ngIf="toy.imageData"
+    src="data:image/png;base64,{{toy.imageData}}"
+    alt="{{toy.name}}"
+  />
+  <mat-card-content>
+    <p>{{ toy.desc }}</p>
+    <p>{{ toy.id }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>
+      <mat-icon (click)="deleteToy(toy.id)">delete</mat-icon>
+    </button>
+    <a routerLink="/toys/{{toy.id}}/edit" mat-button class="noColorLink">
+      <mat-icon>edit</mat-icon>
+    </a>
+    <!--
+      <a routerLink="/toys/{{toy.id}}/show" mat-button class="noColorLink"
+        ><mat-icon>eye</mat-icon></a
+      >
+    -->
+  </mat-card-actions>
+</mat-card>

@@ -1,0 +1,91 @@
+<div *ngIf="mode != 'fetching'">
+  <div *ngIf="!post; else: forminfo" novalidate>
+    <form
+      [formGroup]="formGroup"
+      (ngSubmit)="onSubmit(formGroup.value)"
+      class="form"
+    >
+      <mat-form-field class="form-element" style="display:none;">
+        <mat-icon matPrefix>image</mat-icon>
+        <input
+          matInput
+          placeholder="imageData"
+          formControlName="imageData"
+          autocomplete="off"
+          [(ngModel)]="filestring"
+        />
+      </mat-form-field>
+      <mat-form-field class="form-element">
+        <mat-icon matPrefix>code</mat-icon>
+        <input
+          matInput
+          placeholder="Name"
+          formControlName="name"
+          autocomplete="off"
+        />
+        <mat-error
+          *ngIf="
+            !formGroup.controls['name'].valid &&
+            formGroup.controls['name'].touched
+          "
+        >
+          Enter Valid Name
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="form-element">
+        <mat-icon matPrefix>movie</mat-icon>
+        <textarea
+          matInput
+          placeholder="Movie"
+          matTextareaAutosize
+          formControlName="movie"
+        ></textarea>
+      </mat-form-field>
+      <div class="form-element">
+        <a (click)="fileInput.click()" mat-mini-fab>
+          <mat-icon>image</mat-icon>
+          <input
+            #fileInput
+            type="file"
+            (change)="getFiles($event)"
+            style="display:none;"
+          />
+        </a>
+        <span *ngIf="filestring">
+          <img
+            src="data:image/png;base64,{{filestring}}"
+            width="50"
+            height="50"
+            alt=""
+            class="right"
+          />
+        </span>
+      </div>
+      <div class="form-element">
+        <button
+          mat-raised-button
+          type="submit"
+          class="button"
+          [disabled]="!formGroup.valid"
+        >
+          {{ this.mode | uppercase }}
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <ng-template #forminfo>
+    <mat-list>
+      <mat-list-item> <h4 mat-line>Creating a toy</h4> </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>code</mat-icon>
+        <h4 mat-line>{{ post.name }}</h4>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>color_lens</mat-icon>
+        <h4 mat-line>{{ post.movie }}</h4>
+      </mat-list-item>
+    </mat-list>
+  </ng-template>
+</div>

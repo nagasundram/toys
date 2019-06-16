@@ -1,0 +1,31 @@
+.form-element {
+  padding: 15px 5px 0px 0px;
+  width: 80%;
+  margin-left: 40px;
+}
+.form-element button {
+  float: right;
+  margin-top: 10%;
+}
+/** Overrides underline color **/
+.form-element.mat-form-field-appearance-legacy .mat-form-field-underline,
+.form-element.mat-form-field-appearance-legacy .mat-form-field-ripple,
+.form-element.mat-form-field-appearance-legacy.mat-focused
+  .mat-form-field-underline,
+.form-element.mat-form-field-appearance-legacy.mat-focused
+  .mat-form-field-ripple {
+  background-color: white;
+}
+
+/** Overrides label color **/
+.form-element.mat-form-field-appearance-legacy .mat-form-field-label,
+.form-element.mat-form-field-appearance-legacy.mat-focused
+  .mat-form-field-label {
+  color: white;
+}
+
+/** Overrides caret & text color **/
+.form-element.mat-form-field-appearance-legacy .mat-input-element {
+  caret-color: white;
+  color: white;
+}
